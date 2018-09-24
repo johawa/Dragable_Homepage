@@ -1,0 +1,32 @@
+.Container {
+    height: 100%;
+    width: 100%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -o-user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.Navbar {
+    width: 100%;
+    min-height: 1.5rem; 
+    box-sizing: border-box;
+    background-color: black;    
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.Main {
+    flex: 1;  
+}
+
+
+
+
+

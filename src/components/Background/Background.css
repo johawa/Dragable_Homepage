@@ -1,0 +1,7 @@
+.Background{   
+ 
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+}
