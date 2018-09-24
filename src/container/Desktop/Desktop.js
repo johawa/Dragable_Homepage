@@ -20,8 +20,8 @@ const icons = [
 class Desktop extends Component {
     state = {
         items: [
-            { id: 0, name: '1', top: 100, left: 100, visible: false },
-            { id: 1, name: '2', top: 100, left: 700, visible: false },
+            { id: 0, name: '1', top: 200, left: 100, visible: false },
+            { id: 1, name: '2', top: 200, left: 700, visible: false },
         ],
     }
 
@@ -64,20 +64,23 @@ class Desktop extends Component {
                         <CSSTransition
                             classNames='fade'
                             timeout={{
-                                enter: 500,
-                                exit: 500,
+                                enter: 400,
+                                exit: 1000,
                             }}
                             key={item.id}
                             unmountOnExit
                             mountOnEnter
                             in={item.visible}
-                        >
+                            >
+                          {/*   {item.visible ? */}
                             <div>
                                 <Item
                                     item={item}
                                     index={index}
                                     handleDrop={(item) => this.onDrop(item)} />
                             </div>
+                           {/*  :
+                            <div></div> } */}
                         </CSSTransition>
                     )
                 })}
