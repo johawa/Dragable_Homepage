@@ -35,7 +35,7 @@ class Item extends Component {
             connectDragSource &&
             connectDragPreview(
                 <div className='app-frame'
-                    style={{ left: item.left, top: item.top }}>
+                    style={{ left: item.left, top: item.top, backgroundColor: item.color }}>
                     {connectDragSource(<div className='app-header'>
                         <Toolbar />
                         <div className='app-header__pattern'>

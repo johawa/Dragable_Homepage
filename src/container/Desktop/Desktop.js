@@ -20,8 +20,8 @@ const icons = [
 class Desktop extends Component {
     state = {
         items: [
-            { id: 0, name: '1', top: 200, left: 100, visible: false },
-            { id: 1, name: '2', top: 200, left: 700, visible: false },
+            { id: 0, name: '1', top: 200, left: 100, visible: false, color:'aqua' },
+            { id: 1, name: '2', top: 200, left: 700, visible: false, color:'yellow' },
         ],
     }
 
@@ -64,8 +64,8 @@ class Desktop extends Component {
                         <CSSTransition
                             classNames='fade'
                             timeout={{
-                                enter: 400,
-                                exit: 1000,
+                                enter: 700,
+                                exit: 700,
                             }}
                             key={item.id}
                             unmountOnExit
