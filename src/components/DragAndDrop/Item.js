@@ -22,7 +22,7 @@ function collect(connect, monitor) {
 }
 
 class Item extends Component {
- 
+
 
     render() {
         const { isDragging, connectDragSource, connectDragPreview, item } = this.props;
