@@ -9,14 +9,20 @@ import './animation.css';
 
 import Item from '../../components/DragAndDrop/Item';
 import Board from '../../components/DragAndDrop/DropTarget';
+import DesktopIcon from './DesktopIcon';
+
+import MyWorkSvg from '../../asstest/portfolio.svg';
+import SpotifySvg from '../../asstest/spotify.svg';
+import PaintSvg from '../../asstest/watercolor.svg';
 
 import '../../css/AppFrame.css';
 
-const icons = [
-    { id: 0, name: '1', top: 40, left: 40 },
-    { id: 1, name: '2', top: 100, left: 40 },
-    { id: 2, name: '3', top: 160, left: 40 },
+const AppIcons = [
+    { id: 0, top: 40, left: 40, name: 'My Work', highlighted: false, SVG: MyWorkSvg },
+    { id: 1, top: 190, left: 40, name: 'Paint.exe', highlighted: false, SVG: PaintSvg },
+    { id: 2, top: 340, left: 40, name: 'Spotify.exe', highlighted: false, SVG: SpotifySvg },
 ]
+
 
 class Desktop extends Component {
     state = {
@@ -25,7 +31,7 @@ class Desktop extends Component {
             { id: 1, name: '2', top: 200, left: 700, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'yellow' },
             { id: 2, name: '3', top: 400, left: 450, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'red' },
         ],
-
+        highlightedIconId: null
     }
 
     onDrop = (item) => {
@@ -72,7 +78,7 @@ class Desktop extends Component {
                 }
             })
         }
-        else {          
+        else {
             return
         }
     }
@@ -106,7 +112,7 @@ class Desktop extends Component {
         })
     }
 
-    IconClickHandler(item) {
+    openApp(item) {
         //Open App of Close it 
         const id = item.id
 
@@ -118,6 +124,12 @@ class Desktop extends Component {
                 ...state,
                 currentItem
             }
+        })
+    }
+
+    highlightItem(item) {
+        this.setState({
+            highlightedIconId: item.id
         })
     }
 
@@ -146,7 +158,7 @@ class Desktop extends Component {
                                     minimized={item.minimized}
                                     index={index}
                                     clickAppFrame={this.onClickAppFrame.bind(this, item)}
-                                    CloseClick={this.IconClickHandler.bind(this, item)}
+                                    CloseClick={this.openApp.bind(this, item)}
                                     MinimizeClick={this.minimizeItem.bind(this, item)}
                                     handleDrop={(item) => this.onDrop(item)} />
                             </div>
@@ -155,20 +167,20 @@ class Desktop extends Component {
                     )
                 })}
 
-
                 {
-                    icons.map((item, index) => {
-                        const { top, left } = item;
-                        return (<div
-                            onClick={this.IconClickHandler.bind(this, item)}
+                    AppIcons.map((item, index) => {
+                        return (<DesktopIcon
+                            Click={this.highlightItem.bind(this, item)}
+                            DoubleClick={this.openApp.bind(this, item)}
+                            highlighted={this.state.highlightedIconId}
                             key={item.id}
                             item={item}
                             index={index}
-                            style={{ width: '50px', height: '50px', backgroundColor: 'red', position: 'absolute', top, left, zIndex: '800' }}
                         >
                             {item.name}
-                        </div>)
+                        </DesktopIcon>)
                     })
+
                 }
                 <Board moveBox={(item, left, top) => this.newLoaction(item, left, top)} />
             </div>

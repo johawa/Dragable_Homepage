@@ -21,3 +21,20 @@
   position: absolute;
   z-index: 50;
 }
+
+.App-Icon:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.App-Icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App-Icon__SVG {
+  display: 'block';
+  margin: 'auto';
+  
+}
