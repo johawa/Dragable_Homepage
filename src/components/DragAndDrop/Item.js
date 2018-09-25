@@ -53,6 +53,7 @@ class Item extends Component {
                         <Toolbar
                             CloseClick={this.props.CloseClick}
                             MinimizeClick={this.props.MinimizeClick}
+                            title={item.name}
                         />
                         <div className='app-header__pattern'>
                         </div>

@@ -14,13 +14,14 @@
 .Navbar {
     width: 100%;
     min-height: 1.5rem; 
+    height: 1.5rem;
     box-sizing: border-box;
     background-color: black;    
 
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .Main {

@@ -27,9 +27,9 @@ const AppIcons = [
 class Desktop extends Component {
     state = {
         items: [
-            { id: 0, name: '1', top: 207, left: 100, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'aqua' },
-            { id: 1, name: '2', top: 200, left: 700, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'yellow' },
-            { id: 2, name: '3', top: 400, left: 450, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'red' },
+            { id: 0, name: 'My Work', top: 207, left: 100, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'aqua' },
+            { id: 1, name: 'Paint.exe', top: 200, left: 700, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'yellow' },
+            { id: 2, name: 'Spotify.exe', top: 400, left: 450, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'red' },
         ],
         highlightedIconId: null,
         focusedFrameId: null,
