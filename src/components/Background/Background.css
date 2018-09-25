@@ -2,6 +2,7 @@
  
     background-size: cover;
     height: 100vh;
+    max-height: 100%;
     width: 100vw;
     -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
 }

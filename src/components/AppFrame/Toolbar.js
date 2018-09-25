@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Button from './button';
 import Background from '../../asstest/DoubleLine.png';
 
 class Toolbar extends Component {
@@ -14,9 +13,9 @@ class Toolbar extends Component {
             <div className='app-toolbar' style={{ backgroundImage: `url(${Background})` }}>
                 
                 <ul className='app-controls'>
-                    <Button className='close' onClick={this.closeAppFrame.bind(this)}/>
-                    <Button className='minimise' />
-                    <Button className='maximise' />
+                    <li className='close' onClick={this.props.CloseClick}/>
+                    <li className='minimise' onClick={this.props.MinimizeClick}/>
+                    <li className='maximise' />
                 </ul>
                 
                 <div className='app-title'>THIS IS A TITLE</div>
