@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import background_1 from './asstest/background_1.jpg';
+import background_2 from './asstest/background_2.jpg';
 
 const Context = React.createContext();
 
@@ -8,7 +10,27 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 counter: state.counter + action.payload,
-            };       
+            };
+        case 'OPEN_APP':
+            return {
+                ...state,
+                items: action.payload,
+            };
+        case 'CHANGE_FRAME_POSITION':
+            return {
+                ...state,
+                items: action.payload,
+            };
+        case 'TOGGLE_FRAME_SIZE':
+            return {
+                ...state,
+                items: action.payload,
+            };
+        case 'TOGGLE_FRAME_SIZE_2':
+            return {
+                ...state,
+                items: action.payload,
+            };
         default:
             return state;
     }
@@ -16,8 +38,17 @@ const reducer = (state, action) => {
 
 export class Provider extends Component {
     state = {
-        background: ['url(http://wallpapercave.com/wp/NNo5yub.jpg)', 'green', 'blue', 'yellow'],
-        counter: 0,       
+        background: ['linear-gradient(to right, #0099f7, #f11712)', '#008081', `url(${background_2})`, 'yellow',],
+        counter: 0,
+        testItem: [
+            { id: 0, name: "testItem_1", open: false },
+            { id: 1, name: "testItem_2", open: false }
+        ],
+        items: [
+            { id: 0, name: 'My Work', top: 207, left: 100, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'aqua' },
+            { id: 1, name: 'Paint.exe', top: 200, left: 700, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'yellow' },
+            { id: 2, name: 'Spotify.exe', top: 400, left: 450, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'red' },
+        ],
         dispatch: action => this.setState(state => reducer(state, action))
     };
 

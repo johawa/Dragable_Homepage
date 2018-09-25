@@ -26,6 +26,11 @@ const AppIcons = [
 
 class Desktop extends Component {
     state = {
+        items: [
+            { id: 0, name: 'My Work', top: 207, left: 100, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'aqua' },
+            { id: 1, name: 'Paint.exe', top: 200, left: 700, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'yellow' },
+            { id: 2, name: 'Spotify.exe', top: 400, left: 450, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'red' },
+        ],
         highlightedIconId: null,
         focusedFrameId: null,
     }
@@ -53,7 +58,7 @@ class Desktop extends Component {
         });
     }
 
-    onClickAppFrame(item, items, dispatch) {
+    onClickAppFrame(item) {
         //set State to fucused Frame ID
 
         const id = item.id
@@ -64,17 +69,16 @@ class Desktop extends Component {
             focusedFrameId: id
         })
         //Check if Item is Minimized, if so, maximize it again, otherwise do nothing
-        
 
         if (ItemToUpdate.minimized) {
             ItemToUpdate.minimized = false;
             ItemToUpdate.scale = 1;
-            ItemToUpdate.top = 250; 
+            ItemToUpdate.top = 250;
             console.log(ItemToUpdate)
-             dispatch({
+            dispatch({
                 type: 'TOGGLE_FRAME_SIZE_2',
-                payload: updatedItems,
-            }); 
+                payload: ItemToUpdate,
+            });
         }
         else {
             return
@@ -110,11 +114,11 @@ class Desktop extends Component {
         /*   this.setState((prevState, state) => {
               let currentItem = prevState.items.find(item =>
                   item.id === id);
-    
+     
               const wrapper = document.getElementById(`DesktopWrapper`)
               const windowHeight = wrapper.getBoundingClientRect().height;
               const newPosition = windowHeight - (currentItem.height * 0.65);
-    
+     
               if (!currentItem.minimized) {
                   currentItem.minimized = !currentItem.minimized;
                   currentItem.scale = 0.5;
@@ -124,7 +128,7 @@ class Desktop extends Component {
                   currentItem.scale = 1;
                   currentItem.top = 200;
               }
-    
+     
               return {
                   ...state,
                   currentItem

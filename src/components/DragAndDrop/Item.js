@@ -25,8 +25,7 @@ class Item extends Component {
 
 
     render() {
-        const { isDragging, connectDragSource, connectDragPreview, item, minimized, focused} = this.props;
-        console.log(minimized)
+        const { isDragging, connectDragSource, connectDragPreview, item, minimized, focused } = this.props;
         if (isDragging) {
             return null
         }
@@ -37,10 +36,9 @@ class Item extends Component {
             connectDragPreview(
                 <div className="app-frame"
                     id={`app-frame-${item.id}`}
-                    onClick={this.props.clickAppFrame}
                     style={{
                         //cursor: minimized ? 'zoom-in' : 'cursor',
-                        zIndex: focused === item.id ? '600' : '500', 
+                        zIndex: focused === item.id ? '600' : '500',
                         left: item.left,
                         top: item.top,
                         width: item.width,
@@ -58,7 +56,11 @@ class Item extends Component {
                         <div className='app-header__pattern'>
                         </div>
                     </div>)}
-                    {this.props.children}
+                    <div
+                        onClick={this.props.clickAppFrame}
+                    >
+                        hi
+                    </div>
 
                 </div>
             )
