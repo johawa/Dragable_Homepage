@@ -31,7 +31,8 @@ class Desktop extends Component {
             { id: 1, name: '2', top: 200, left: 700, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'yellow' },
             { id: 2, name: '3', top: 400, left: 450, width: 400, height: 300, scale: 1, minimized: false, visible: false, color: 'red' },
         ],
-        highlightedIconId: null
+        highlightedIconId: null,
+        focusedFrameId: null,
     }
 
     onDrop = (item) => {
@@ -59,8 +60,13 @@ class Desktop extends Component {
     }
 
     onClickAppFrame(item) {
-        //Check if Item is Minimized, if so, maximize it again, otherwise do nothing
+        //set State to fucused Frame ID
+
         const id = item.id
+        this.setState({
+            focusedFrameId: id
+        })
+        //Check if Item is Minimized, if so, maximize it again, otherwise do nothing
         let currentItem = this.state.items.find(item =>
             item.id === id)
         if (currentItem.minimized) {
@@ -154,6 +160,7 @@ class Desktop extends Component {
 
                             <div>
                                 <Item
+                                    focused={this.state.focusedFrameId}
                                     item={item}
                                     minimized={item.minimized}
                                     index={index}

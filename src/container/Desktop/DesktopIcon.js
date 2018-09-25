@@ -14,7 +14,7 @@ const desktopIcon = (props) => {
                 width: '100px',
                 height: '100px',
                 position: 'absolute',
-                zIndex: '800',
+                zIndex: '400',
                 left: item.left,
                 top: item.top,
                 padding: '5px',
