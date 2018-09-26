@@ -35,6 +35,7 @@ class Item extends Component {
             connectDragSource &&
             connectDragPreview(
                 <div className="app-frame"
+                    onClick={this.props.clickAppFrame}
                     id={`app-frame-${item.id}`}
                     style={{
                         //cursor: minimized ? 'zoom-in' : 'cursor',
@@ -57,7 +58,7 @@ class Item extends Component {
                         </div>
                     </div>)}
                     <div
-                        onClick={this.props.clickAppFrame}
+
                     >
                         hi
                     </div>

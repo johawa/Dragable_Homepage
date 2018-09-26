@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const desktopIcon = (props) => {
     const { item, highlighted } = props

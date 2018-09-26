@@ -5,6 +5,7 @@ import NavItem from './NavItem';
 import NavItem_View from './NavItem_View';
 import NavItem_Go from './NavItem_Go';
 import NavItem_Start from './NavItem_Start';
+import NavItem_AppTracker from './NavItem_AppTracker';
 
 
 import './Navbar.css';
@@ -15,6 +16,7 @@ class Navbar extends Component {
             <React.Fragment>
                 <div className='nav-Left'>
                     <NavItem_Start />
+                    <NavItem_AppTracker />
                     <NavItem name='File' />
                     <NavItem_Go />
                     <NavItem_View />

@@ -26,8 +26,7 @@ const AppIcons = [
 
 class Desktop extends Component {
     state = {
-        highlightedIconId: null,
-        focusedFrameId: null,
+        highlightedIconId: null,        
     }
 
     onDrop = (item) => {
@@ -60,21 +59,22 @@ class Desktop extends Component {
         const updatedItems = [...items];
         let ItemToUpdate = updatedItems.find(item => item.id === id);
 
-        this.setState({
-            focusedFrameId: id
+        dispatch({
+            type: 'FOCUS_FRAME',
+            payload: id
         })
         //Check if Item is Minimized, if so, maximize it again, otherwise do nothing
-        
+
 
         if (ItemToUpdate.minimized) {
             ItemToUpdate.minimized = false;
             ItemToUpdate.scale = 1;
-            ItemToUpdate.top = 250; 
-            console.log(ItemToUpdate)
-             dispatch({
+            ItemToUpdate.top = 250;
+         
+            dispatch({
                 type: 'TOGGLE_FRAME_SIZE_2',
                 payload: updatedItems,
-            }); 
+            });
         }
         else {
             return
@@ -132,18 +132,21 @@ class Desktop extends Component {
           }) */
     }
 
-    openApp(item, items, dispatch) {
+    openApp(item, items, dispatch, value) {
         //Open App of Close it        
-        const id = item.id
+        const id = item.id 
+        value.lastOpenID = id
         const updatedItems = [...items];
         let ItemToUpdate = updatedItems.find(item => {
             return (item.id === id)
-        })
+        })       
         ItemToUpdate.visible = !ItemToUpdate.visible
         dispatch({
             type: 'OPEN_APP',
             payload: updatedItems,
         });
+
+       
         /* this.setState((prevState, state) => {
             let currentItem = prevState.items.find(item =>
                 item.id === id)
@@ -169,7 +172,7 @@ class Desktop extends Component {
             <Consumer>
                 {
                     value => {
-                        const { dispatch, items } = value;
+                        const { dispatch, items, focusedFrameId } = value;
                         return (
                             <div className="Wrapper" id="DesktopWrapper">
                                 {items.map((item, index) => {
@@ -188,7 +191,7 @@ class Desktop extends Component {
 
                                             <div>
                                                 <Item
-                                                    focused={this.state.focusedFrameId}
+                                                    focused={focusedFrameId}
                                                     item={item}
                                                     minimized={item.minimized}
                                                     index={index}
@@ -209,7 +212,7 @@ class Desktop extends Component {
                                     AppIcons.map((item, index) => {
                                         return (<DesktopIcon
                                             Click={this.highlightItem.bind(this, item)}
-                                            DoubleClick={this.openApp.bind(this, item, items, dispatch)}
+                                            DoubleClick={this.openApp.bind(this, item, items, dispatch, value)}
                                             highlighted={this.state.highlightedIconId}
                                             key={item.id}
                                             item={item}
