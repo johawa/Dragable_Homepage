@@ -58,7 +58,8 @@ class Item extends Component {
                         </div>
                     </div>)}
                     <div
-
+                        style={{ widht: '100%', height: '100%', background: 'green' }}
+                        onClick={this.props.clickAppBody}
                     >
                         hi
                     </div>

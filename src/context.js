@@ -16,6 +16,11 @@ const reducer = (state, action) => {
                 ...state,
                 items: action.payload,
             };
+        case 'CLOSE_ALL_APPS':
+            return {
+                ...state,
+                items: action.payload,
+            };
         case 'CHANGE_FRAME_POSITION':
             return {
                 ...state,

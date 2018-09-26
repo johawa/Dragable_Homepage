@@ -23,10 +23,9 @@ const AppIcons = [
     { id: 2, top: 340, left: 40, name: 'Spotify.exe', highlighted: false, SVG: SpotifySvg },
 ]
 
-
 class Desktop extends Component {
     state = {
-        highlightedIconId: null,        
+        highlightedIconId: null,
     }
 
     onDrop = (item) => {
@@ -53,8 +52,8 @@ class Desktop extends Component {
     }
 
     onClickAppFrame(item, items, dispatch) {
-        //set State to fucused Frame ID
 
+        //set State to fucused Frame ID
         const id = item.id
         const updatedItems = [...items];
         let ItemToUpdate = updatedItems.find(item => item.id === id);
@@ -63,14 +62,24 @@ class Desktop extends Component {
             type: 'FOCUS_FRAME',
             payload: id
         })
-        //Check if Item is Minimized, if so, maximize it again, otherwise do nothing
 
+        
+    }
+
+    onClickAppBody(item, items, dispatch) {
+        //set State to fucused Frame ID
+
+        const id = item.id
+        const updatedItems = [...items];
+        let ItemToUpdate = updatedItems.find(item => item.id === id);
+      
+        //Check if Item is Minimized, if so, maximize it again, otherwise do nothing
 
         if (ItemToUpdate.minimized) {
             ItemToUpdate.minimized = false;
             ItemToUpdate.scale = 1;
             ItemToUpdate.top = 250;
-         
+
             dispatch({
                 type: 'TOGGLE_FRAME_SIZE_2',
                 payload: updatedItems,
@@ -105,57 +114,22 @@ class Desktop extends Component {
             type: 'TOGGLE_FRAME_SIZE',
             payload: updatedItems,
         });
-
-
-        /*   this.setState((prevState, state) => {
-              let currentItem = prevState.items.find(item =>
-                  item.id === id);
-    
-              const wrapper = document.getElementById(`DesktopWrapper`)
-              const windowHeight = wrapper.getBoundingClientRect().height;
-              const newPosition = windowHeight - (currentItem.height * 0.65);
-    
-              if (!currentItem.minimized) {
-                  currentItem.minimized = !currentItem.minimized;
-                  currentItem.scale = 0.5;
-                  currentItem.top = newPosition;
-              } else {
-                  currentItem.minimized = !currentItem.minimized;
-                  currentItem.scale = 1;
-                  currentItem.top = 200;
-              }
-    
-              return {
-                  ...state,
-                  currentItem
-              }
-          }) */
     }
 
     openApp(item, items, dispatch, value) {
         //Open App of Close it        
-        const id = item.id 
+        const id = item.id
         value.lastOpenID = id
         const updatedItems = [...items];
         let ItemToUpdate = updatedItems.find(item => {
             return (item.id === id)
-        })       
+        })
         ItemToUpdate.visible = !ItemToUpdate.visible
         dispatch({
             type: 'OPEN_APP',
             payload: updatedItems,
         });
 
-       
-        /* this.setState((prevState, state) => {
-            let currentItem = prevState.items.find(item =>
-                item.id === id)
-            currentItem.visible = !currentItem.visible
-            return {
-                ...state,
-                currentItem
-            }
-        }) */
     }
 
 
@@ -196,6 +170,7 @@ class Desktop extends Component {
                                                     minimized={item.minimized}
                                                     index={index}
                                                     clickAppFrame={this.onClickAppFrame.bind(this, item, items, dispatch)}
+                                                    clickAppBody={this.onClickAppBody.bind(this, item, items, dispatch)}
                                                     CloseClick={this.openApp.bind(this, item, items, dispatch)}
                                                     MinimizeClick={this.minimizeItem.bind(this, item, items, dispatch)}
                                                     handleDrop={(item) => this.onDrop(item)} />
@@ -232,6 +207,7 @@ class Desktop extends Component {
             </Consumer>
         )
     }
+    
 }
 
 export default DragDropContext(HTML5Backend)(Desktop)

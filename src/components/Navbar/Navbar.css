@@ -34,7 +34,8 @@
 }
 
 .Dropdown-Content a:hover {
-    background-color: #f1f1f1
+    background-color: #0004FF;
+    color: #f9f9f9;
 }
 
 .Dropdown:hover .Dropdown-Content {

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Clock from 'react-live-clock';
 
-import NavItem from './NavItem';
+import NavItem_Help from './NavItem_Help';
 import NavItem_View from './NavItem_View';
 import NavItem_Go from './NavItem_Go';
 import NavItem_Start from './NavItem_Start';
 import NavItem_AppTracker from './NavItem_AppTracker';
+import NavItem_File from './NavItem_File';
 
 
 import './Navbar.css';
@@ -17,10 +18,10 @@ class Navbar extends Component {
                 <div className='nav-Left'>
                     <NavItem_Start />
                     <NavItem_AppTracker />
-                    <NavItem name='File' />
+                    <NavItem_File />
                     <NavItem_Go />
                     <NavItem_View />
-                    <NavItem name='Help' />
+                    <NavItem_Help />
                 </div>
                 <div className='nav-Right'>
                     <Clock className='clock' />
