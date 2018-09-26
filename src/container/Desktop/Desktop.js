@@ -15,8 +15,13 @@ import MyWorkSvg from '../../asstest/portfolio.svg';
 import SpotifySvg from '../../asstest/spotify.svg';
 import PaintSvg from '../../asstest/watercolor.svg';
 
+import Spotify from '../../components/Apps/Spotify'
+import MyWork from '../../components/Apps/MyWork'
+import Paint from '../../components/Apps/Paint'
+
 import '../../css/AppFrame.css';
 
+//Watch The Order its Important
 const AppIcons = [
     { id: 0, top: 40, left: 40, name: 'My Work', highlighted: false, SVG: MyWorkSvg },
     { id: 1, top: 190, left: 40, name: 'Paint.exe', highlighted: false, SVG: PaintSvg },
@@ -63,7 +68,7 @@ class Desktop extends Component {
             payload: id
         })
 
-        
+
     }
 
     onClickAppBody(item, items, dispatch) {
@@ -72,7 +77,7 @@ class Desktop extends Component {
         const id = item.id
         const updatedItems = [...items];
         let ItemToUpdate = updatedItems.find(item => item.id === id);
-      
+
         //Check if Item is Minimized, if so, maximize it again, otherwise do nothing
 
         if (ItemToUpdate.minimized) {
@@ -141,6 +146,8 @@ class Desktop extends Component {
 
 
     render() {
+        //Watch The Order its Important
+        const Apps = [<MyWork />, <Paint />, <Spotify />]
 
         return (
             <Consumer>
@@ -173,7 +180,13 @@ class Desktop extends Component {
                                                     clickAppBody={this.onClickAppBody.bind(this, item, items, dispatch)}
                                                     CloseClick={this.openApp.bind(this, item, items, dispatch)}
                                                     MinimizeClick={this.minimizeItem.bind(this, item, items, dispatch)}
-                                                    handleDrop={(item) => this.onDrop(item)} />
+                                                    handleDrop={(item) => this.onDrop(item)} >
+                                                    {
+                                                        //THE APP TO OUTPUT
+                                                        Apps[item.id]                                                       
+
+                                                    }
+                                                </Item>
                                             </div>
 
                                         </CSSTransition>
@@ -207,7 +220,7 @@ class Desktop extends Component {
             </Consumer>
         )
     }
-    
+
 }
 
 export default DragDropContext(HTML5Backend)(Desktop)

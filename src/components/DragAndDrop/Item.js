@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { DragSource, ConnectDragPreview } from 'react-dnd';
 
+
 import Toolbar from '../AppFrame/Toolbar';
 
 const itemSource = {
@@ -58,14 +59,14 @@ class Item extends Component {
                         </div>
                     </div>)}
                     <div
-                        className={`app-frame-body${minimized ? ' minimized' :  ' normal'}`}
-                        style={{                           
+                        className={`app-frame-body${minimized ? ' minimized' : ' normal'}`}
+                        style={{
                             height: '80%',
-                            background: minimized ? 'green' : 'black',                            
+
                         }}
                         onClick={this.props.clickAppBody}
                     >
-                        hi
+                        {this.props.children}
                     </div>
 
                 </div>
