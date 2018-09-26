@@ -29,6 +29,7 @@ class Item extends Component {
         if (isDragging) {
             return null
         }
+        console.log(minimized)
 
         return (
             connectDragPreview &&
@@ -38,7 +39,6 @@ class Item extends Component {
                     onClick={this.props.clickAppFrame}
                     id={`app-frame-${item.id}`}
                     style={{
-                        //cursor: minimized ? 'zoom-in' : 'cursor',
                         zIndex: focused === item.id ? '600' : '500',
                         left: item.left,
                         top: item.top,
@@ -58,7 +58,11 @@ class Item extends Component {
                         </div>
                     </div>)}
                     <div
-                        style={{ widht: '100%', height: '100%', background: 'green' }}
+                        className={`app-frame-body${minimized ? ' minimized' :  ' normal'}`}
+                        style={{                           
+                            height: '80%',
+                            background: minimized ? 'green' : 'black',                            
+                        }}
                         onClick={this.props.clickAppBody}
                     >
                         hi

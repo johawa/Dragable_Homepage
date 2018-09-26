@@ -49,6 +49,10 @@
     list-style: none;
 }
 
+.minimized {
+    cursor: zoom-in;
+}
+
 .close {
     background-color: magenta;
     box-shadow: magenta inset 0px 0px 0px 2px;
